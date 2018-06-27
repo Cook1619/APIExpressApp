@@ -18,8 +18,16 @@ router.post('/', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-    chirpsStore.UpdateChirp(req.body);
+    let id = req.params.id
+    chirpsStore.UpdateChirp(id, req.body);
     res.sendStatus(200);
 })
+
+router.delete('/:id' , (res, req) => {
+    let id = req.params.id
+    chirpsStore.DeleteChirp(id);
+    res.sendStatus(200);
+})
+
 module.exports = router;
 
